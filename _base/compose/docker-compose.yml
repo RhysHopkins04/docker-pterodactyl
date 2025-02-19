@@ -16,6 +16,8 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ${DATA_DIR}/traefik/traefik.toml:/etc/traefik/traefik.toml
       - ${DATA_DIR}/traefik/acme.json:/acme.json
+    environment:
+      - CF_DNS_API_TOKEN=${CF_DNS_API_TOKEN}
 
 networks:
   pterodactyl:

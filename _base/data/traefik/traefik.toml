@@ -12,8 +12,12 @@
 [providers.docker]
   network="pterodactyl"
 
-[certificatesResolvers.letsencrypt.acme]
-  email = "admin@example.com"
-  storage = "acme.json"
-  [certificatesResolvers.letsencrypt.acme.httpChallenge]
-    entryPoint = "web"
+[certificatesResolvers.letsencrypt]
+  [certificatesResolvers.letsencrypt.acme]
+    email = "name@example.com"
+    storage = "acme.json"
+    caServer = "https://acme-v02.api.letsencrypt.org/directory"
+
+    [certificatesResolvers.letsencrypt.acme.dnsChallenge]
+      provider = "cloudflare"
+      delayBeforeCheck = 10
